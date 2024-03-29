@@ -22,7 +22,7 @@ public class listView5 extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private ListView listView;
     private SimpleCursorAdapter adapter;
-    private Button btn_capture;
+    private Button btn_capture, btn_goFirstPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,21 @@ public class listView5 extends AppCompatActivity {
 
         populateListView();
 
+        btn_goFirstPage = findViewById(R.id.btn_goFirstPage);
+        //If user click the go First Page button, Go back to the first page for planning new travel.
+        btn_goFirstPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listView5.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // Delete all currently activity
+
+            }
+        });
+
         btn_capture = findViewById(R.id.btn_capture);
+
         btn_capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

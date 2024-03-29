@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class selectDate3 extends AppCompatActivity {
@@ -114,18 +115,33 @@ public class selectDate3 extends AppCompatActivity {
 
                 materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER");
 
+
+
                 //Save Button
                 materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {
                     @Override
                     public void onPositiveButtonClick(Pair<Long, Long> selection) {
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/ MM/ yyyy");
-                        simpleDateFormat.setTimeZone(TimeZone.getDefault()); // Set time zone
-                        Date date1 = new Date(selection.first);
-                        Date date2 = new Date(selection.second);
+                        TimeZone timeZoneKorea = TimeZone.getTimeZone("Asia/Seoul");
+                        Calendar calendarStart = Calendar.getInstance(timeZoneKorea);
+                        calendarStart.setTimeInMillis(selection.first);
+                        calendarStart.set(Calendar.HOUR_OF_DAY, 0);
+                        calendarStart.set(Calendar.MINUTE, 0);
+                        calendarStart.set(Calendar.SECOND, 0);
+                        calendarStart.set(Calendar.MILLISECOND, 0);
 
-                        dateString1 = simpleDateFormat.format(date1);
-                        dateString2 = simpleDateFormat.format(date2);
-                        datePickerText.setText(dateString1 + " \n~ " + dateString2);
+                        Calendar calendarEnd = Calendar.getInstance(timeZoneKorea);
+                        calendarEnd.setTimeInMillis(selection.second);
+                        calendarEnd.set(Calendar.HOUR_OF_DAY, 23);
+                        calendarEnd.set(Calendar.MINUTE, 59);
+                        calendarEnd.set(Calendar.SECOND, 59);
+                        calendarEnd.set(Calendar.MILLISECOND, 999);
+
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.KOREA);
+                        simpleDateFormat.setTimeZone(timeZoneKorea); // 한국 시간대 설정
+
+                        dateString1 = simpleDateFormat.format(calendarStart.getTime());
+                        dateString2 = simpleDateFormat.format(calendarEnd.getTime());
+                        datePickerText.setText(dateString1 + " ~ " + dateString2);
                     }
                 });
             }
