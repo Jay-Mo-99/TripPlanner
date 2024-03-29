@@ -23,41 +23,35 @@
 
     <ListView
         android:id="@+id/lv_listView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingTop="@dimen/margin_bottom"
         app:layout_constraintTop_toBottomOf="@id/tv_subject"
+        app:layout_constraintBottom_toTopOf="@id/btn_goFirstPage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
-
-
-    </ListView>
-    <Button
-        android:id="@+id/btn_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/button"
-        android:paddingBottom="@dimen/margin_bottom"
-        android:text="Capture"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sub_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_goFirstPage" />
+    />
 
     <Button
         android:id="@+id/btn_goFirstPage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/button"
+        android:layout_marginEnd="8dp"
         android:text="New Trip"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sub_title"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_capture"
-        app:layout_constraintEnd_toStartOf="@+id/btn_capture"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_capture"
+        app:layout_constraintTop_toBottomOf="@id/lv_listView"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/btn_capture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Capture"
+        app:layout_constraintStart_toEndOf="@id/btn_goFirstPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lv_listView"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
