@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">A01_Travel</string>
+    <string name="welcomeTitle_1p">Travel Planner</string>
+    <string name="whereTitle_1p">Where do you want to go?</string>
+    <string name="hyperLink_Recommendation_1p">The best places to travel in 2024</string>
+    <string name="submit">Submit</string>
+
+
+    <string-array name="planets_array">
+        <item>Tour</item>
+        <item>Food</item>
+        <item>Accom</item>
+    </string-array>
+
+</resources>

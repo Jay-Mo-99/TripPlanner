@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_top">24dp</dimen>
+    <dimen name="margin_bottom">24dp</dimen>
+    <dimen name="margin_bottom_small">12dp</dimen>
+    <dimen name="margin_right">48dp</dimen>
+
+    <dimen name="main_title">30dp</dimen>
+    <dimen name="sub_title">20dp</dimen>
+
+    <dimen name ="spinner_width">120dp</dimen>
+
+    <dimen name ="edit_text">300dp</dimen>
+    <dimen name ="edit_text_small">150dp</dimen>
+</resources>

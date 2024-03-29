@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/margin_bottom_small"
+    android:layout_marginRight="@dimen/margin_bottom_small"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".enterGroupMember2">
+
+    <ImageView
+        android:layout_width="248dp"
+        android:layout_height="223dp"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:src="@drawable/member" />
+
+    <TextView
+        android:id="@+id/tv_where"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the names of members"
+        android:textSize="@dimen/sub_title"
+        android:textColor="@color/main"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        />
+
+    <EditText
+        android:id="@+id/et_name1"
+        android:layout_width="@dimen/edit_text"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        android:singleLine = "true"
+        android:hint="Jane Doe"
+    />
+    <EditText
+        android:id="@+id/et_name2"
+        android:layout_width="@dimen/edit_text"
+        android:layout_height="wrap_content"
+        android:singleLine = "true"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        />
+    <EditText
+        android:id="@+id/et_name3"
+        android:layout_width="@dimen/edit_text"
+        android:layout_height="wrap_content"
+        android:singleLine = "true"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        />
+    <EditText
+        android:id="@+id/et_name4"
+        android:layout_width="@dimen/edit_text"
+        android:layout_height="wrap_content"
+        android:singleLine = "true"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_warning"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        android:textColor="@color/warning"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:layout_marginBottom="@dimen/margin_bottom">
+
+        <android.widget.Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_right"
+            android:background="@color/grey"
+            android:text="Cancel"
+            android:textColor="@color/white" />
+
+        <android.widget.Button
+            android:id="@+id/btn_who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_cancel"
+            android:background="@color/button"
+            android:text="@string/submit"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

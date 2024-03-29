@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/margin_bottom_small"
+    android:layout_marginRight="@dimen/margin_bottom_small"
+    android:gravity="center"
+    tools:context=".tripPlan4">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_bottom"
+            android:layout_marginBottom="@dimen/margin_bottom_small"
+            >
+            <!--1 row -->
+            <TextView
+                android:text="destination"
+                android:id="@+id/tv_where"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main"
+                android:textSize="@dimen/main_title" />
+
+
+        </RelativeLayout>
+
+        <!--2 row -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small"
+            android:layout_marginLeft="@dimen/margin_bottom_small"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/main"
+                android:id="@+id/tv_nameLabel"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:text="Member: "
+                android:textSize="@dimen/sub_title"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/main"
+                android:id="@+id/tv_name1"
+                android:layout_toRightOf="@+id/tv_nameLabel"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:textSize="@dimen/sub_title"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/main"
+                android:id="@+id/tv_name2"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:layout_toRightOf="@+id/tv_name1"
+                android:textSize="@dimen/sub_title"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/main"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:id="@+id/tv_name3"
+                android:layout_toRightOf="@+id/tv_name2"
+                android:textSize="@dimen/sub_title"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/main"
+                android:id="@+id/tv_name4"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:layout_toRightOf="@+id/tv_name3"
+                android:textSize="@dimen/sub_title"
+                />
+
+        </RelativeLayout>
+        <!--3 row -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button"
+                android:id="@+id/tv_startDate"
+
+                android:textSize="@dimen/sub_title"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_via"
+                android:textColor="@color/button"
+                android:layout_toRightOf="@+id/tv_startDate"
+                android:text=" ~ "
+                android:textSize="@dimen/sub_title"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_endDate"
+                android:textColor="@color/button"
+                android:layout_toRightOf="@+id/tv_via"
+                android:textSize="@dimen/sub_title"
+                />
+
+        </RelativeLayout>
+
+
+
+        <!--4 row -->
+        <!--Label for Plan-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_right"
+                android:id="@+id/tv_Type"
+                android:text="Type"
+                android:textSize="@dimen/sub_title"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:id="@+id/tv_Task"
+                android:layout_marginRight="@dimen/margin_right"
+                android:text="Task"
+                android:layout_toRightOf="@+id/tv_Type"
+                android:textSize="@dimen/sub_title"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:id="@+id/tv_Budget"
+                android:layout_marginRight="@dimen/margin_right"
+                android:text="Budget"
+                android:layout_toRightOf="@+id/tv_Task"
+                android:textSize="@dimen/sub_title"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:id="@+id/tv_Check"
+                android:layout_marginRight="@dimen/margin_bottom_small"
+                android:text="Check"
+                android:layout_toRightOf="@+id/tv_Budget"
+                android:textSize="@dimen/sub_title"
+                />
+        </RelativeLayout>
+
+        <!--Row 5 Insert Plan -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small"
+            >
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_weight="1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_task"
+                android:hint="Zoo,Cafe,Hotel"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/spinner"
+                />
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/et_budget"
+                android:hint="10,150"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/et_task"
+                android:singleLine="true"
+                />
+            <CheckBox
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_check1"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/et_budget"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_weight="1"
+                android:layout_width="@dimen/spinner_width"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_task2"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/spinner2"
+                />
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/et_budget2"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/et_task2"
+                android:singleLine="true"
+                />
+            <CheckBox
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_check2"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/et_budget2"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_weight="1"
+                android:layout_width="@dimen/spinner_width"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_task3"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/spinner3"
+                />
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/et_budget3"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/et_task3"
+                android:singleLine="true"
+                />
+            <CheckBox
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_check3"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/et_budget3"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <Spinner
+                android:id="@+id/spinner4"
+                android:layout_weight="1"
+                android:layout_width="@dimen/spinner_width"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_task4"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/spinner4"
+                />
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/et_budget4"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/et_task4"
+                android:singleLine="true"
+                />
+            <CheckBox
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_check4"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/et_budget4"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <Spinner
+                android:id="@+id/spinner5"
+                android:layout_weight="1"
+                android:layout_width="@dimen/spinner_width"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_task5"
+                android:singleLine="true"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/spinner5"
+                />
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:id="@+id/et_budget5"
+                android:layout_weight="2"
+                android:layout_toRightOf="@+id/et_task5"
+                android:singleLine="true"
+                />
+            <CheckBox
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/cb_check5"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/et_budget5"
+                />
+
+        </RelativeLayout>
+
+
+
+
+
+<!--6 row Total budget -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Budget : "
+                android:textSize="@dimen/sub_title"
+                android:id="@+id/tv_totalBudgetLabel"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_totalBudget"
+                android:textColor="@color/brick"
+                android:layout_toRightOf="@+id/tv_totalBudgetLabel"
+                android:textSize="@dimen/sub_title"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_bottom">
+
+            <android.widget.Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_right"
+                android:background="@color/grey"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sub_title" />
+
+            <android.widget.Button
+                android:id="@+id/btn_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_right"
+                android:layout_toRightOf="@+id/btn_cancel"
+                android:background="@color/black"
+                android:text="Clear"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sub_title" />
+
+            <android.widget.Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/btn_clear"
+                android:background="@color/button"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sub_title" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom">
+            <android.widget.Button
+                android:id="@+id/btn_listView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check your whole plans"
+                android:textColor="@color/white"
+                android:background="@color/main"
+                />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_warning"
+        android:layout_marginBottom="@dimen/margin_bottom_small"
+        android:textColor="@color/warning"
+        />
+
+    </LinearLayout>
+</ScrollView>
