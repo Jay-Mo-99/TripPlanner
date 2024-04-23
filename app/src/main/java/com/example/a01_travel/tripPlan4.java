@@ -20,45 +20,15 @@ import android.widget.Toast;
 
 
 public class tripPlan4 extends AppCompatActivity {
-    private TextView tv_where, tv_name1, tv_name2, tv_name3, tv_name4,tv_warning,tv_startDate,tv_endDate;
+    private TextView tv_where, tv_name1, tv_name2, tv_name3, tv_name4,tv_startDate,tv_endDate;
     TextView tv_budget1, tv_budget2,tv_budget3,tv_budget4,tv_budget5,tv_totalBudget;
     String destination, name1,name2,name3,name4,startDate,endDate;
-    //Variable for Button
     private Button btn_save, btn_clear, btn_cancel, btn_listView;
-    //String for et_text
 
     //Variable for Spinner
     Spinner spinner,spinner2,spinner3,spinner4,spinner5;
 
-    CheckBox cb_check1,cb_check2,cb_check3,cb_check4,cb_check5,cb_check6;
-    String selectedItem1,selectedItem2,selectedItem3,selectedItem4,selectedItem5;
 
-    private void saveTravelPlan() {
-        String destination = tv_where.getText().toString();
-        String startDate = tv_startDate.getText().toString();
-        String endDate = tv_endDate.getText().toString();
-        String budget = tv_totalBudget.getText().toString();
-
-
-        // Creating a Database Helper Object
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COLUMN_DESTINATION, destination);
-        values.put(DatabaseHelper.COLUMN_START_DATE, startDate);
-        values.put(DatabaseHelper.COLUMN_END_DATE, endDate);
-        values.put(DatabaseHelper.COLUMN_BUDGET, Double.parseDouble(budget));
-
-        long newRowId = db.insert(DatabaseHelper.TABLE_NAME, null, values);
-        if (newRowId != -1) {
-            Toast.makeText(this, "Success to save", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Fail to save", Toast.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +43,6 @@ public class tripPlan4 extends AppCompatActivity {
         tv_name2 = findViewById(R.id.tv_name2);
         tv_name3 = findViewById(R.id.tv_name3);
         tv_name4 = findViewById(R.id.tv_name4);
-        tv_warning = findViewById(R.id.tv_warning);
 
         tv_budget1 = findViewById(R.id.et_budget);
         tv_budget2 = findViewById(R.id.et_budget2);
@@ -87,9 +56,7 @@ public class tripPlan4 extends AppCompatActivity {
         btn_clear = findViewById(R.id.btn_clear);
 
 
-
-    //Spinner Part
-
+        //Set the spinner, calling setupSpinner function
         spinner = (Spinner) findViewById(R.id.spinner);
         setupSpinner(spinner);
 
@@ -138,14 +105,12 @@ public class tripPlan4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent5 = new Intent(tripPlan4.this, listView5.class);
-
-
                 startActivity(intent5);
             }
         });
 
 
-        //Click cancel Button
+        //When the user click btn_cancel, Go back to the previous page(electDate3.class)
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +126,7 @@ public class tripPlan4 extends AppCompatActivity {
             }
         });
 
-        //If the user click the clean Button
+        //When the user click btn_clear, Initialize EditText, spinner, and checkbox.
         btn_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,7 +178,7 @@ public class tripPlan4 extends AppCompatActivity {
             }
         });
 
-        //If the user click the save Button
+        //When the user click btn_save, Call the calculateTotalBudget() and saveTravelPlan() functions.
         btn_save.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -224,31 +189,38 @@ public class tripPlan4 extends AppCompatActivity {
             }
         });
 
-        //If the user click the download Button
-
     }
 
 
-    // Function for setup Spinner
+    /** @Function: setupSpinner()
+     *  @Param: Spinner spinner
+     *  @Detail: Configures a spinner with an array of items and handles selection events.*/
     private void setupSpinner(Spinner spinner) {
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        // Set up a callback for when an item is selected within the spinner
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected item's string and possibly use it for some action
                 String selectedItem = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // If the user does not select anything
+                // no action needed if nothing is selected
             }
         });
     }
 
-    //Function for calculate Budget
+    /** @Function: calculateTotalBudget()
+     *  @Detail: Calculates the total budget by summing all the numbers the user entered in et_budget.
+     *  If there is input other than a number, Toggle tells the user that it is in the wrong format.*/
     private void calculateTotalBudget() {
         double total = 0;
         EditText[] budgetFields = {
@@ -273,5 +245,41 @@ public class tripPlan4 extends AppCompatActivity {
         }
 
         tv_totalBudget.setText(String.valueOf(total));
+    }
+
+    /** @Function: saveTravelPlan()
+     *  @Detail: This function stores the destination, start date, end date, and total budget entered by the user in the database.
+     * The budget information entered by the user is converted to Double format and stored in the database, and when successfully stored, the user is shown a success message.
+     * If the save fails, a failure message is displayed. After all database operations, close the database to release the resource.*/
+    private void saveTravelPlan() {
+        String destination = tv_where.getText().toString();
+        String startDate = tv_startDate.getText().toString();
+        String endDate = tv_endDate.getText().toString();
+        String budget = tv_totalBudget.getText().toString();
+
+
+        // Create an instance of the database helper class to manage database creation and version management
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Prepare the values to insert into the database
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.COLUMN_DESTINATION, destination);
+        values.put(DatabaseHelper.COLUMN_START_DATE, startDate);
+        values.put(DatabaseHelper.COLUMN_END_DATE, endDate);
+        // Convert the string budget to double and store
+        values.put(DatabaseHelper.COLUMN_BUDGET, Double.parseDouble(budget));
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(DatabaseHelper.TABLE_NAME, null, values);
+        if (newRowId != -1) {
+            // Display a toast message if the insert was successful
+            Toast.makeText(this, "Success to save", Toast.LENGTH_SHORT).show();
+        } else {
+            // Display a toast message if the insert failed
+            Toast.makeText(this, "Fail to save", Toast.LENGTH_SHORT).show();
+        }
+
+        db.close();// Close the database
     }
 }

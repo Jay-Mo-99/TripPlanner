@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- TextView to display the title at the top of the screen -->
     <TextView
         android:id="@+id/tv_subject"
         android:layout_width="match_parent"
@@ -21,6 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <!-- ListView to display a list of items dynamically -->
     <ListView
         android:id="@+id/lv_listView"
         android:layout_width="0dp"
@@ -31,6 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
     />
 
+    <!-- Button to navigate to the first page of the app -->
     <Button
         android:id="@+id/btn_goFirstPage"
         android:layout_width="0dp"
@@ -42,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/lv_listView"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <!-- Button to trigger a capture action -->
     <Button
         android:id="@+id/btn_capture"
         android:layout_width="0dp"

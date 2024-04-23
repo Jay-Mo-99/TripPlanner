@@ -5,35 +5,35 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
+    <!-- TextView for displaying the destination of the travel plan -->
     <TextView
         android:id="@+id/tv_destination"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="New York"
         android:gravity="center"/>
 
+    <!-- TextView for displaying the start date of the travel plan -->
     <TextView
         android:id="@+id/tv_start_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="25/03/2024"
         android:gravity="center"/>
 
+    <!-- TextView for displaying the end date of the travel plan -->
     <TextView
         android:id="@+id/tv_end_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="27/03/2024"
         android:gravity="center"/>
 
+    <!-- TextView for displaying the budget allocated for the travel plan -->
     <TextView
         android:id="@+id/tv_budget"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="600"
         android:gravity="center"/>
 </LinearLayout>

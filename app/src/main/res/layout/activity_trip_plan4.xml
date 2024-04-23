@@ -9,12 +9,14 @@
     android:gravity="center"
     tools:context=".tripPlan4">
 
+    <!-- Linear layout container for organizing child views vertically -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <!-- Container for destination TextView -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -22,6 +24,7 @@
             android:layout_marginBottom="@dimen/margin_bottom_small"
             >
             <!--1 row -->
+            <!-- TextView for displaying destination -->
             <TextView
                 android:text="destination"
                 android:id="@+id/tv_where"
@@ -40,6 +43,7 @@
             android:layout_marginBottom="@dimen/margin_bottom_small"
             android:layout_marginLeft="@dimen/margin_bottom_small"
             >
+            <!-- Multiple TextViews for member names arranged horizontally -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -89,12 +93,14 @@
                 />
 
         </RelativeLayout>
+
         <!--3 row -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_bottom_small">
 
+            <!-- TextViews for start date, end date, and a connecting symbol -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,7 +184,8 @@
                 />
         </RelativeLayout>
 
-        <!--Row 5 Insert Plan -->
+        <!--Row 5  -->
+        <!-- Buttons for actions like "Cancel", "Clear", "Save" -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -452,15 +459,6 @@
                 />
 
     </RelativeLayout>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_warning"
-        android:layout_marginBottom="@dimen/margin_bottom_small"
-        android:textColor="@color/warning"
-        />
 
     </LinearLayout>
 </ScrollView>
