@@ -11,14 +11,9 @@ import android.widget.TextView;
 
 public class enterGroupMember2 extends AppCompatActivity {
 
-    private TextView tv_where;
-    private EditText et_name1;
-    private EditText et_name2;
-    private EditText et_name3;
-    private EditText et_name4;
-
+    private TextView tv_where, tv_warning;
+    private EditText et_name1, et_name2, et_name3, et_name4;
     private Button btn_who, btn_cancel;
-    private TextView tv_warning;
 
 
 
@@ -33,17 +28,16 @@ public class enterGroupMember2 extends AppCompatActivity {
         String destination = secondIntent.getStringExtra("destination");
         tv_where.setText(destination);
 
-        //Get the name variable from edit text
+        //Get the id of the xml file and substitute it into a variable
         et_name1 = findViewById(R.id.et_name1);
         et_name2 = findViewById(R.id.et_name2);
         et_name3 = findViewById(R.id.et_name3);
         et_name4 = findViewById(R.id.et_name4);
-
-        //Get the warning from id
         tv_warning = findViewById(R.id.tv_warning);
-
-        //Cancle button click
         btn_cancel = findViewById(R.id.btn_cancel);
+
+
+        //When the user click the btn_cancel button, Go back to the MainActivity.class(first page)
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +45,11 @@ public class enterGroupMember2 extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        //Submit button click
+
+
+
         btn_who = findViewById(R.id.btn_who);
+        //When the user click the btn_who button, go to the next page(selectDate3.class)
         btn_who.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,17 +59,19 @@ public class enterGroupMember2 extends AppCompatActivity {
                 String name3 = et_name3.getText().toString().trim();
                 String name4 = et_name4.getText().toString().trim();
 
-
+                //When the user didn't enter names and click the button, tv_warning shows the warning message
                 if(name1.isEmpty() && name2.isEmpty() && name3.isEmpty() && name4.isEmpty()) {
 
                     tv_warning.setText("Please Enter at least one name");
                 }
+                //When a user presses a button after typing a name out of order,
+                // tv_warning prompts a user to enter a name in order.
                 else if(name1.isEmpty() || (name2.isEmpty() && (!name3.isEmpty() || !name4.isEmpty()))
                         || (name3.isEmpty() && !name4.isEmpty())) {
                     tv_warning.setText("Please enter the names in order");
                 }
                 else {
-                    // Proceed to the next activity
+                    // After the user enters the names in order, press the button to move to the next page (selectDate3.class).
                     Intent intent2 = new Intent(enterGroupMember2.this, selectDate3.class);
                     // Add only entered names to the intent
                     if (!name1.isEmpty()) intent2.putExtra("name1", name1);

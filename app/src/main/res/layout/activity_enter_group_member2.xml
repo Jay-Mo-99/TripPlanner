@@ -10,12 +10,14 @@
     android:orientation="vertical"
     tools:context=".enterGroupMember2">
 
+    <!-- ImageView to display a image -->
     <ImageView
         android:layout_width="248dp"
         android:layout_height="223dp"
         android:layout_marginBottom="@dimen/margin_bottom"
         android:src="@drawable/member" />
 
+    <!-- TextView for displaying the destination, initially set to invisible -->
     <TextView
         android:id="@+id/tv_where"
         android:layout_width="wrap_content"
@@ -23,6 +25,8 @@
         android:textSize="10dp"
         android:visibility="invisible"
         />
+
+    <!-- TextView informs users to enter names of members -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +36,8 @@
         android:layout_marginBottom="@dimen/margin_bottom"
         />
 
+
+    <!-- EditText for the first member's name input -->
     <EditText
         android:id="@+id/et_name1"
         android:layout_width="@dimen/edit_text"
@@ -40,6 +46,8 @@
         android:singleLine = "true"
         android:hint="Jane Doe"
     />
+
+    <!-- EditText for the second member's name input -->
     <EditText
         android:id="@+id/et_name2"
         android:layout_width="@dimen/edit_text"
@@ -47,6 +55,8 @@
         android:singleLine = "true"
         android:layout_marginBottom="@dimen/margin_bottom_small"
         />
+
+    <!-- EditText for the third member's name input -->
     <EditText
         android:id="@+id/et_name3"
         android:layout_width="@dimen/edit_text"
@@ -54,6 +64,8 @@
         android:singleLine = "true"
         android:layout_marginBottom="@dimen/margin_bottom_small"
         />
+
+    <!-- EditText for the fourth member's name input -->
     <EditText
         android:id="@+id/et_name4"
         android:layout_width="@dimen/edit_text"
@@ -62,6 +74,7 @@
         android:layout_marginBottom="@dimen/margin_bottom_small"
         />
 
+    <!-- TextView to display warnings or errors to the user -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,11 +83,13 @@
         android:textColor="@color/warning"
         />
 
+    <!-- RelativeLayout to contain the buttons -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="82dp"
         android:layout_marginBottom="@dimen/margin_bottom">
 
+        <!-- Cancel button -->
         <android.widget.Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
@@ -84,6 +99,7 @@
             android:text="Cancel"
             android:textColor="@color/white" />
 
+        <!-- Submit button  -->
         <android.widget.Button
             android:id="@+id/btn_who"
             android:layout_width="wrap_content"
@@ -94,6 +110,5 @@
             android:textColor="@color/white" />
 
     </RelativeLayout>
-
 
 </LinearLayout>

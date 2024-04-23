@@ -19,29 +19,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.core.util.Pair;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialDatePicker; //
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 public class selectDate3 extends AppCompatActivity {
 
-    private Button btn_where, btn_cancel;
+    private Button btn_cancel, btn_when;
     //Variables for ex page
-    private TextView tv_where, tv_name1, tv_name2, tv_name3, tv_name4;
+    private TextView tv_where, tv_name1, tv_name2, tv_name3, tv_name4,tv_warning,datePickerText;
 
     //For Calendar
     private ImageButton btn_changeDate;
     private int currYear, currMonth, currDay;
     private DatePickerDialog.OnDateSetListener callbackMethod;
-    private Button btn_when;
-    private TextView tv_warning;
-    //String for date
+
+    //String for saving the date from calendar
     String dateString1,dateString2,name1,name2,name3,name4;
 
 
@@ -50,13 +47,7 @@ public class selectDate3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_date3);
-        TextView datePickerText;
 
-
-
-        Calendar calendar;
-        datePickerText = findViewById(R.id.date_picker_text);
-        calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 
 
         //Retrieve from xml
@@ -66,6 +57,7 @@ public class selectDate3 extends AppCompatActivity {
         tv_name3 = findViewById(R.id.tv_name3);
         tv_name4 = findViewById(R.id.tv_name4);
         tv_warning = findViewById(R.id.tv_warning);
+        datePickerText = findViewById(R.id.date_picker_text);
 
 
         //Retrieve destination
@@ -96,31 +88,28 @@ public class selectDate3 extends AppCompatActivity {
         }
 
 
-        //Intent for the fourth page
-
-
-        //Select the period
-        ImageButton dateRangePicker = findViewById(R.id.date_range_picker_btn);
-        dateRangePicker.setOnClickListener(new View.OnClickListener() {
+        //When the user click the btn_changeDate(Image button), use can select the period of Travel
+        btn_changeDate = findViewById(R.id.date_range_picker_btn);
+        btn_changeDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
+                builder.setTitleText("Set the Date");
 
-                builder.setTitleText("Set the Itinerary");
-
-                //Select the Date before
-                builder.setSelection(Pair.create(MaterialDatePicker.thisMonthInUtcMilliseconds(), MaterialDatePicker.todayInUtcMilliseconds()));
-
+                //Set the default selection date from the first day of the month to today
+                builder.setSelection(Pair.create(MaterialDatePicker.thisMonthInUtcMilliseconds(),
+                        MaterialDatePicker.todayInUtcMilliseconds()));
+                // Create the MaterialDatePicker
                 MaterialDatePicker materialDatePicker = builder.build();
+                // Show date picker
+                materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER"); //tag will be used for management fragment
 
-                materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER");
 
-
-
-                //Save Button
+                // Implement a listener for the positive (OK) button in the date picker
                 materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {
                     @Override
                     public void onPositiveButtonClick(Pair<Long, Long> selection) {
+                        // Set the Korean time zone
                         TimeZone timeZoneKorea = TimeZone.getTimeZone("Asia/Seoul");
                         Calendar calendarStart = Calendar.getInstance(timeZoneKorea);
                         calendarStart.setTimeInMillis(selection.first);
@@ -129,6 +118,7 @@ public class selectDate3 extends AppCompatActivity {
                         calendarStart.set(Calendar.SECOND, 0);
                         calendarStart.set(Calendar.MILLISECOND, 0);
 
+                        // Initialize the end date calendar with the selected time and adjust it to the end of the day
                         Calendar calendarEnd = Calendar.getInstance(timeZoneKorea);
                         calendarEnd.setTimeInMillis(selection.second);
                         calendarEnd.set(Calendar.HOUR_OF_DAY, 23);
@@ -136,9 +126,11 @@ public class selectDate3 extends AppCompatActivity {
                         calendarEnd.set(Calendar.SECOND, 59);
                         calendarEnd.set(Calendar.MILLISECOND, 999);
 
+                        // Format the dates into "dd/MM/yyyy" using the Korean locale
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.KOREA);
-                        simpleDateFormat.setTimeZone(timeZoneKorea); // 한국 시간대 설정
+                        simpleDateFormat.setTimeZone(timeZoneKorea); // Set the Korean Time
 
+                        // Convert the start and end calendar dates into formatted strings
                         dateString1 = simpleDateFormat.format(calendarStart.getTime());
                         dateString2 = simpleDateFormat.format(calendarEnd.getTime());
                         datePickerText.setText(dateString1 + " ~ " + dateString2);
@@ -149,7 +141,7 @@ public class selectDate3 extends AppCompatActivity {
 
 
 
-        //Click cancel
+        //When the user click btn_cancel, Go back to the previous page(enterGroupMember2.class)
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +151,7 @@ public class selectDate3 extends AppCompatActivity {
             }
         });
 
-        //When clicking the button
+        //When the user click btn_when,go to the next page(tripPlan4.class)
         btn_when = findViewById(R.id.btn_when);
         btn_when.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +168,7 @@ public class selectDate3 extends AppCompatActivity {
                     startActivity(nextIntent);
                 }
                 else {
+                    //If the user didn't select the date range, tv_warning display the error message
                     tv_warning.setText("Please Set the Date for trip");
                 }
             }

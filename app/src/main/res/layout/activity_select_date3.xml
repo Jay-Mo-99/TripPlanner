@@ -10,6 +10,7 @@
     android:gravity="center"
     tools:context=".selectDate3">
 
+    <!-- TextView elements for displaying names -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
         android:visibility="gone"
         />
 
+    <!-- TextView for displaying the destination, initially invisible -->
     <TextView
         android:id="@+id/tv_where"
         android:layout_width="wrap_content"
@@ -44,6 +46,7 @@
         android:visibility="gone" />
 
 
+    <!-- ImageButton for date picker -->
     <ImageButton
         android:id="@+id/date_range_picker_btn"
         android:layout_width="271dp"
@@ -51,6 +54,7 @@
         android:layout_marginBottom="@dimen/margin_bottom_small"
         android:src="@drawable/datebutton" />
 
+    <!-- TextView for displaying the date -->
     <TextView
         android:id="@+id/date_picker_text"
         android:layout_width="wrap_content"
@@ -62,19 +66,21 @@
         android:textColor="@color/main"
         android:textSize="@dimen/main_title" />
 
+    <!-- TextView for displaying warning message -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_warning"
         android:layout_marginBottom="@dimen/margin_bottom_small"
-        android:textColor="@color/warning"
-        />
+        android:textColor="@color/warning" />
 
+    <!-- Container for buttons  -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="88dp"
         android:layout_marginBottom="@dimen/margin_bottom">
 
+        <!-- Cancel button to return to the previous activity -->
         <android.widget.Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
@@ -84,6 +90,7 @@
             android:text="Cancel"
             android:textColor="@color/white" />
 
+        <!-- Submit button to proceed with the entered data -->
         <android.widget.Button
             android:id="@+id/btn_when"
             android:layout_width="wrap_content"
